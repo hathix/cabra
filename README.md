@@ -1,5 +1,4 @@
-
-# Cabra (cabra)
+# Cabra
 
 > Free studying app
 
