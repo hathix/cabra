@@ -12,7 +12,7 @@ function addItem(title, completed=false) {
 }
 
 // Facebook style store creation.
-const Deck = assign({}, BaseStore, {
+const DeckStore = assign({}, BaseStore, {
   // public methods used by Controller-View to operate on data
   getAll() {
     return {
@@ -32,7 +32,7 @@ const Deck = assign({}, BaseStore, {
         // For details, see: http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html#why-we-need-a-dispatcher
         if (text !== '') {
           addItem(text);
-          Deck.emitChange();
+          DeckStore.emitChange();
         }
         break;
 
@@ -41,4 +41,4 @@ const Deck = assign({}, BaseStore, {
   })
 });
 
-export default Deck;
+export default DeckStore;
