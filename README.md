@@ -3,36 +3,23 @@
 
 > Free studying app
 
-## Running your project
+[Cabra](http://getcabra.com), the free, open-source studying app, reborn.
 
-The generated project includes a live-reloading static server on port `8080` (you can change the port in the `gulpfile.js` config), which will build, launch, and rebuild the app whenever you change application code. To start the server, run:
+Cabra uses:
+- [React](https://facebook.github.io/react/)
+- [Material Design](http://material-ui.com/)
+- [React Router](https://github.com/rackt/react-router)
+
+It was built with [Yeoman](http://yeoman.io ), [Bower](http://bower.io), and [Gulp](http://gulpjs.com).
+
+## Upcoming Features
+
+- [Parse](http://parse.com) for the backend
+- [Pure CSS](http://purecss.io) for responsive design
+- [Phonegap](http://phonegap.com/) to port to Android and iOS
+
+## Running
 
 ```bash
 $ npm start
-```
-
-If you prefer to just build without the live reload and build-on-each-change watcher, run:
-
-```bash
-$ npm run build
-```
-
-
-## Generating Additional Code
-
-You can add additional functionality to your application by invoking the subgenerators included in the Flux Generator. You can add components using the following commands:
-
-#### Components
-```bash
-$ yo flux:component ComponentName
-```
-
-#### Actions
-```bash
-$ yo flux:action ActionCreatorName
-```
-
-#### Stores
-```bash
-$ yo flux:store StoreName
 ```
