@@ -1,43 +1,47 @@
+/**
+ * Contains the framework for the app; individual pages can be rendered
+ * inside this.
+ */
+
 import React from 'react';
-import TodoStore from '../stores/TodoStore';
-import ActionCreator from '../actions/TodoActionCreators';
-import App from './App.jsx';
+import {AppBar, Styles} from 'material-ui';
+import {RouteHandler} from 'react-router';
+
+const ThemeManager = new Styles.ThemeManager();
 
 export default React.createClass({
-  _onChange() {
-    this.setState(TodoStore.getAll());
-  },
-
   getInitialState() {
-    return TodoStore.getAll();
+      return {};
   },
 
   componentDidMount() {
-    TodoStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
-    TodoStore.removeChangeListener(this._onChange);
   },
 
-  handleAddTask(e) {
-    let title = prompt('Enter task title:');
-    if (title) {
-      ActionCreator.addItem(title);
-    }
-  },
+  childContextTypes: {
+   muiTheme: React.PropTypes.object
+ },
 
-  handleClear(e) {
-    ActionCreator.clearList();
-  },
+ getChildContext() {
+   return {
+     muiTheme: ThemeManager.getCurrentTheme()
+   };
+ },
+
 
   render() {
-    let {tasks} = this.state;
     return (
-      <App
-        onAddTask={this.handleAddTask}
-        onClear={this.handleClear}
-        tasks={tasks} />
+        <div className="main-page">
+            <AppBar
+                title="Cabra"
+                />
+
+            {/* The router puts the children of the current route here */}
+            <RouteHandler/>
+
+        </div>
     );
   }
 });

@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 import {ListItem} from 'material-ui';
+let Router = require('react-router');
+let Link = Router.Link;
 
 export default React.createClass({
     propTypes: {
@@ -22,9 +24,11 @@ export default React.createClass({
   render() {
     let {name} = this.props;
     return (
-        <ListItem
-          primaryText={name}
-          />
+        <Link to="/deck/5" key={name}>
+            <ListItem
+              primaryText={name}
+              />
+        </Link>
     );
   }
 });
