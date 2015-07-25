@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {ListItem} from 'material-ui';
 
 export default React.createClass({
     propTypes: {
@@ -21,7 +22,9 @@ export default React.createClass({
   render() {
     let {name} = this.props;
     return (
-      <p>{name}</p>
+        <ListItem
+          primaryText={name}
+          />
     );
   }
 });

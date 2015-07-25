@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
-import Deck from './Deck.jsx';
-import TaskList from './TaskList.jsx';
+import DeckList from './DeckList.jsx';
 import {AppBar, AppCanvas, RaisedButton, Styles} from 'material-ui';
 
 const ThemeManager = new Styles.ThemeManager();
@@ -31,22 +30,15 @@ export default React.createClass({
   render() {
     let {onAddTask, onClear, tasks} = this.props;
     return (
-      <div className="example-page">
+      <div className="main-page">
           <AppBar
               title="Cabra"
               />
-        <h1>Learning Flux</h1>
-        <p>
-          Below is a list of tasks you can implement to better grasp the patterns behind Flux.<br />
-          Most features are left unimplemented with clues to guide you on the learning process.
-        </p>
 
-        <TaskList tasks={tasks} />
+          <div className="page-content">
+              <DeckList />
+          </div>
 
-        <RaisedButton label="Add Task" primary={true} onClick={onAddTask} />
-        <RaisedButton label="Clear List" secondary={true} onClick={onClear} />
-
-        <Deck name="Hey" />
       </div>
     );
   }
