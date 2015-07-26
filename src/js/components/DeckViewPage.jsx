@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import DeckList from './DeckList.jsx';
-import {AppBar, AppCanvas, RaisedButton} from 'material-ui';
+import {AppBar, AppCanvas, RaisedButton, FloatingActionButton, FontIcon}
+    from 'material-ui';
 
 export default React.createClass({
   getDefaultProps() {
@@ -13,6 +14,9 @@ export default React.createClass({
     return (
           <div className="page-content">
               <DeckList />
+              <FloatingActionButton>
+                  <FontIcon className="material-icons">add</FontIcon>
+              </FloatingActionButton>
           </div>
     );
   }
