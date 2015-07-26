@@ -5,7 +5,8 @@ import DeckInfoPage from './components/DeckInfoPage.jsx';
 import Router, {Route, DefaultRoute } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-// React.render(<AppContainer />, document.getElementById('main'));
+// some components need the react-tap-event-plugin to handle touch events
+injectTapEventPlugin();
 
 // Router
 // TODO refactor into own module
@@ -33,6 +34,3 @@ let routes = (
 Router.run(routes, Router.HashLocation, (Root) => {
   React.render(<Root/>, document.body);
 });
-
-// some components need the react-tap-event-plugin to handle touch events
-injectTapEventPlugin();

@@ -22,11 +22,10 @@ export default React.createClass({
   componentWillUnmount() {
   },
 
-  handleBackClick(e) {
-      alert(3);
-      e.preventDefault();
-      history.go(-1);
-  },
+  // handleBackClick(e) {
+  //     e.preventDefault();
+  //     history.go(-1);
+  // },
 
   childContextTypes: {
    muiTheme: React.PropTypes.object
@@ -44,8 +43,8 @@ export default React.createClass({
         <div className="main-page">
             <AppBar
                 title="Cabra"
-                iconElementRight={<FlatButton label="Back" />}
-                onRightIconButtonTouchTap={this.handleBackClick}
+                //iconElementRight={<FlatButton label="Back" />}
+                // onRightIconButtonTouchTap={this.handleBackClick}
                 />
 
             {/* The router puts the children of the current route here */}
