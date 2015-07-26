@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import {ListItem} from 'material-ui';
-let Router = require('react-router');
-let Link = Router.Link;
+import {Link} from 'react-router';
 
 export default React.createClass({
     propTypes: {

@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import {AppBar, Styles} from 'material-ui';
+import {AppBar, FlatButton, Styles} from 'material-ui';
 import {RouteHandler} from 'react-router';
 
 const ThemeManager = new Styles.ThemeManager();
@@ -36,6 +36,7 @@ export default React.createClass({
         <div className="main-page">
             <AppBar
                 title="Cabra"
+                iconElementRight={<FlatButton label="Back" />}
                 />
 
             {/* The router puts the children of the current route here */}

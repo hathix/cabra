@@ -2,9 +2,7 @@ import React from 'react';
 import AppContainer from './components/AppContainer.jsx';
 import DeckViewPage from './components/DeckViewPage.jsx';
 import DeckInfoPage from './components/DeckInfoPage.jsx';
-let Router = require('react-router');
-let Route = Router.Route;
-let DefaultRoute = Router.DefaultRoute;
+import Router, {Route, DefaultRoute } from 'react-router';
 
 // React.render(<AppContainer />, document.getElementById('main'));
 

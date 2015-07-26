@@ -39,6 +39,7 @@
     "eslint": "^0.24.1",
     "eslint-plugin-react": "^3.0.0",
     "flux": "^2.0.3",
+    "lodash": "^3.10.0",
     "material-ui": "^0.10.1",
     "material-ui-sass": "^0.7.5",
     "object-assign": "^3.0.0",
