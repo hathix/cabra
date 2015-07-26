@@ -11,10 +11,15 @@ export default React.createClass({
   },
 
   render() {
+      let southeastStyle = {
+        position: 'absolute',
+        bottom: 20,
+        right: 20
+      };
     return (
           <div className="page-content">
               <DeckList />
-              <FloatingActionButton>
+              <FloatingActionButton style={southeastStyle}>
                   <FontIcon className="material-icons">add</FontIcon>
               </FloatingActionButton>
           </div>
