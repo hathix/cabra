@@ -1,12 +1,12 @@
 import React from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// some components need the react-tap-event-plugin to handle touch events
+injectTapEventPlugin();
+
 import AppContainer from './components/AppContainer.jsx';
 import DeckViewPage from './components/DeckViewPage.jsx';
 import DeckInfoPage from './components/DeckInfoPage.jsx';
 import Router, {Route, DefaultRoute } from 'react-router';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-// some components need the react-tap-event-plugin to handle touch events
-injectTapEventPlugin();
 
 // Router
 // TODO refactor into own module

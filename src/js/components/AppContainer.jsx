@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import AppLeftNav from './AppLeftNav.jsx';
 import {AppBar, FlatButton, Styles} from 'material-ui';
 import {RouteHandler, Navigation} from 'react-router';
 
@@ -17,6 +18,7 @@ export default React.createClass({
   },
 
   componentDidMount() {
+
   },
 
   componentWillUnmount() {
@@ -37,15 +39,21 @@ export default React.createClass({
    };
  },
 
+   _onLeftIconButtonTouchTap() {
+     this.refs.leftNav.toggle();
+ },
 
   render() {
     return (
         <div className="main-page">
             <AppBar
                 title="Cabra"
+                onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
                 //iconElementRight={<FlatButton label="Back" />}
                 // onRightIconButtonTouchTap={this.handleBackClick}
                 />
+
+            <AppLeftNav ref="leftNav" />
 
             {/* The router puts the children of the current route here */}
             <RouteHandler/>
