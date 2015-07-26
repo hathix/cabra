@@ -3,6 +3,7 @@ import AppContainer from './components/AppContainer.jsx';
 import DeckViewPage from './components/DeckViewPage.jsx';
 import DeckInfoPage from './components/DeckInfoPage.jsx';
 import Router, {Route, DefaultRoute } from 'react-router';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // React.render(<AppContainer />, document.getElementById('main'));
 
@@ -22,7 +23,7 @@ import Router, {Route, DefaultRoute } from 'react-router';
 //   </Router>
 // ), document.body);
 
-var routes = (
+let routes = (
   <Route handler={AppContainer}>
       <DefaultRoute handler={DeckViewPage} />
       <Route path="deck/:id" handler={DeckInfoPage} />
@@ -32,3 +33,6 @@ var routes = (
 Router.run(routes, Router.HashLocation, (Root) => {
   React.render(<Root/>, document.body);
 });
+
+// some components need the react-tap-event-plugin to handle touch events
+injectTapEventPlugin();

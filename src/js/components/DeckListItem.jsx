@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {ListItem} from 'material-ui';
-import {Link} from 'react-router';
+import {Link, Navigation} from 'react-router';
 
 export default React.createClass({
     propTypes: {
@@ -20,14 +20,18 @@ export default React.createClass({
   componentDidMount() {
   },
 
+  handleClick(e){
+      e.preventDefault();
+      this.transitionTo("/deck/5");
+  },
+
   render() {
     let {name} = this.props;
     return (
-        <Link to="/deck/5" key={name}>
-            <ListItem
-              primaryText={name}
-              />
-        </Link>
+        <ListItem
+          primaryText={name}
+          containerElement={<Link to="/deck/5" />}
+          />
     );
   }
 });

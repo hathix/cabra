@@ -5,11 +5,13 @@
 
 import React from 'react';
 import {AppBar, FlatButton, Styles} from 'material-ui';
-import {RouteHandler} from 'react-router';
+import {RouteHandler, Navigation} from 'react-router';
 
 const ThemeManager = new Styles.ThemeManager();
 
 export default React.createClass({
+    mixins: [Navigation],
+
   getInitialState() {
       return {};
   },
@@ -18,6 +20,12 @@ export default React.createClass({
   },
 
   componentWillUnmount() {
+  },
+
+  handleBackClick(e) {
+      alert(3);
+      e.preventDefault();
+      history.go(-1);
   },
 
   childContextTypes: {
@@ -37,6 +45,7 @@ export default React.createClass({
             <AppBar
                 title="Cabra"
                 iconElementRight={<FlatButton label="Back" />}
+                onRightIconButtonTouchTap={this.handleBackClick}
                 />
 
             {/* The router puts the children of the current route here */}
