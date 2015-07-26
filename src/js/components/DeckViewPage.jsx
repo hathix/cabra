@@ -17,7 +17,7 @@ export default React.createClass({
         right: 20
       };
     return (
-          <div className="page-content">
+          <div>
               <DeckList />
               <FloatingActionButton style={southeastStyle}>
                   <FontIcon className="material-icons">add</FontIcon>

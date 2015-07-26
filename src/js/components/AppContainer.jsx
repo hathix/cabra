@@ -55,7 +55,9 @@ export default React.createClass({
             <AppLeftNav ref="leftNav" />
 
             {/* The router puts the children of the current route here */}
-            <RouteHandler/>
+            <div className="page-content">
+                <RouteHandler/>
+            </div>
 
         </div>
     );
