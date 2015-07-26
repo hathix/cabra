@@ -1,5 +1,5 @@
 import React from 'react';
-import {LeftNav} from 'material-ui';
+import {LeftNav, MenuItem} from 'material-ui';
 
 export default React.createClass({
   getInitialState() {
@@ -15,6 +15,11 @@ export default React.createClass({
 
   menuItems: [
     { route: '/deck/5', text: 'Deck' },
+    {
+       type: MenuItem.Types.LINK,
+       payload: 'https://github.com/callemall/material-ui',
+       text: 'GitHub'
+   },
   ],
 
   render() {

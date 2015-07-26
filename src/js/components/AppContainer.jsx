@@ -25,7 +25,6 @@ export default React.createClass({
   },
 
   // handleBackClick(e) {
-  //     e.preventDefault();
   //     history.go(-1);
   // },
 
@@ -49,7 +48,7 @@ export default React.createClass({
             <AppBar
                 title="Cabra"
                 onLeftIconButtonTouchTap={this._onLeftIconButtonTouchTap}
-                //iconElementRight={<FlatButton label="Back" />}
+                // iconElementRight={<FlatButton label="Back" />}
                 // onRightIconButtonTouchTap={this.handleBackClick}
                 />
 
