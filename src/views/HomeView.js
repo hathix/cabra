@@ -1,17 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
 import Deck from '../models/Deck';
 
 class HomeView extends Component {
 
-  static contextTypes: {
-    store: PropTypes.object
+  addDeck() {
+     this.props.addDeck(Math.random())
   }
 
   render() {
-    console.log(this.props);
-
     const deckNameList = this.props.decks.map(deck =>
       <p key={ deck.name }>
         { deck.name }
@@ -22,8 +20,8 @@ class HomeView extends Component {
         <div>
           Hello world!!!
 
-          <Button bsStyle="primary">
-            Sup
+          <Button bsStyle="primary" onClick={this.addDeck.bind(this)}>
+            Add Deck
           </Button>
 
           <div>

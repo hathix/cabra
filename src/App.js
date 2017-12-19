@@ -1,9 +1,9 @@
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
-import { Provider, connect } from 'react-redux'
-import { Route } from 'react-router'
-import {createStore, combineReducers, applyMiddleware } from 'redux'
+import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
+import {Provider, connect} from 'react-redux'
+import {Route} from 'react-router'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import createHistory from 'history/createBrowserHistory'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 // import logo from './logo.svg'
 import './App.css'
@@ -23,15 +23,14 @@ let ACTION_TYPES = {
 }
 
 let actions = {
-  addDeck: (deck={name: ''}) => ({
-    type: ACTION_TYPES.ADD_DECK,
-    deck: deck
-  })
+  addDeck: (deck = {
+    name: ''
+  }) => ({type: ACTION_TYPES.ADD_DECK, deck: deck})
 }
 
 // TODO factor out reducers
 // handles all deck-related actions
-let deckReducer = function(state=[], action) {
+let deckReducer = function(state = [], action) {
   switch (action.type) {
     case ACTION_TYPES.ADD_DECK:
       // TODO do all this with immutable.js tbh
@@ -39,10 +38,10 @@ let deckReducer = function(state=[], action) {
         ...state,
         action.deck
       ]
+    default:
+      // do nothing
+      return [...state]
   }
-
-  // default: do nothing
-  return state
 }
 
 // React Router stuff
@@ -64,9 +63,16 @@ const store = createStore(
   applyMiddleware(middleware)
 )
 
-let mapStateToProps = function(state) {
+// for decks
+let mapStateToProps = (state) => {
+  return {decks: state.decks}
+}
+
+let mapDispatchToProps = (dispatch) => {
   return {
-    decks: state.decks
+    addDeck: (name) => {
+      dispatch(actions.addDeck({ name: name }))
+    }
   }
 }
 
@@ -85,26 +91,24 @@ window.testadd = (x) => {
 }
 
 // wrap components with the connector so they can access state
-let HomeView2 = connect(mapStateToProps)(HomeView)
+let HomeView2 = connect(mapStateToProps, mapDispatchToProps)(HomeView)
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <div className="container">
+    return (<div className="App">
+      <div className="container">
 
         <Provider store={store}>
-          { /* ConnectedRouter will use the store from Provider automatically */ }
+          {/* ConnectedRouter will use the store from Provider automatically */}
           <ConnectedRouter history={history}>
             <div>
-              <Route exact path="/" component={HomeView2}/>
+              <Route exact={true} path="/" component={HomeView2}/>
               <Route path="/about" component={HomeView2}/>
             </div>
           </ConnectedRouter>
         </Provider>
-        </div>
       </div>
-    )
+    </div>)
   }
 }
 
