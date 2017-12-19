@@ -4,7 +4,7 @@ import {Route} from 'react-router'
 import {createStore, compose, combineReducers, applyMiddleware} from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import React, {Component} from 'react'
-import persistState, {mergePersistedState} from 'redux-localstorage';
+import persistState, {mergePersistedState, transformState} from 'redux-localstorage';
 import adapter from 'redux-localstorage/lib/adapters/localStorage';
 
 // import logo from './logo.svg'
@@ -80,7 +80,28 @@ let reducers = {
   router: routerReducer
 }
 
-const storage = adapter(window.localStorage)
+let masterReducer = combineReducers(reducers)
+
+let finalReducer = compose(
+  mergePersistedState()
+)(masterReducer)
+
+const storage = compose(
+  transformState([
+    // transform down (before persisting)
+    function(data){
+      // `data` is the store
+      // ignore the router
+      if (data.router) {
+        delete data.router
+      }
+
+      return data
+    }
+  ],[
+    // transform up (after storing, before rehydrating)
+  ])
+)(adapter(window.localStorage))
 
 const enhancer = compose(
   applyMiddleware(middleware),
@@ -89,7 +110,7 @@ const enhancer = compose(
 
 // Also apply our middleware for navigating
 const store = createStore(
-  combineReducers(reducers),
+  finalReducer,
   enhancer
 )
 
@@ -107,7 +128,7 @@ let mapDispatchToProps = (dispatch) => {
 }
 
 // for testing, add a new deck
-store.dispatch(actions.addDeck("cherry"))
+// store.dispatch(actions.addDeck("cherry"))
 
 
 // wrap components with the connector so they can access state
