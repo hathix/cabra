@@ -7,3 +7,18 @@ Scaffolded with <https://github.com/facebookincubator/create-react-app>.
 ```
 npm start
 ```
+
+## Objects
+
+- Deck
+- Card
+- Session
+- User
+
+## Views
+
+- HomeView
+- DeckView
+- StudyView
+- AddView
+- ImportView
