@@ -22,3 +22,8 @@ npm start
 - StudyView
 - AddView
 - ImportView
+
+## Misc todos
+
+- Add Bootstrap-React
+- Bootswatch
