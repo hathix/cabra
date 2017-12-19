@@ -17,6 +17,7 @@ import HomeView from './views/HomeView'
 //   }];
 
 // redux actions
+// TODO factor out actions
 let ACTION_TYPES = {
   ADD_DECK: 'ADD_DECK'
 }
@@ -28,6 +29,7 @@ let actions = {
   })
 }
 
+// TODO factor out reducers
 // handles all deck-related actions
 let deckReducer = function(state=[], action) {
   switch (action.type) {
@@ -73,6 +75,14 @@ store.dispatch(actions.addDeck({
   // a new deck
   name: "cherry"
 }))
+
+// TEST function to add a new deck with the given name x
+window.testadd = (x) => {
+  store.dispatch(actions.addDeck({
+    // a new deck
+    name: x
+  }))
+}
 
 // wrap components with the connector so they can access state
 let HomeView2 = connect(mapStateToProps)(HomeView)
