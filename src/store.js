@@ -40,10 +40,10 @@ let deckReducer = function(state=initialDecks, action) {
 
 // React Router stuff
 // Create a history of your choosing (we're using a browser history in this case)
-const history = createHistory()
+const history = createHistory();
 
 // Build the middleware for intercepting and dispatching navigation actions
-const middleware = routerMiddleware(history)
+const middleware = routerMiddleware(history);
 
 // set up routers. add the reducer to store on 'router' key
 
@@ -61,6 +61,7 @@ const store = createStore(
 
 export { addDeck };
 export { store };
+export { history };
 
 let mapStateToProps = function(state) {
   return {
