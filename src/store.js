@@ -1,6 +1,5 @@
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import {connect} from 'react-redux';
+import {createStore, combineReducers } from 'redux';
+import {Provider, connect} from 'react-redux';
 
 let initialState = {
   decks: [ {
@@ -45,7 +44,11 @@ let reducer = function(state, action) {
   return state;
 }
 
-let store = createStore(reducer, initialState);
+// Add the reducer to your store on the `routing` key
+const store = createStore(
+  reducer,
+  initialState
+);
 
 export { addDeck };
 export { store };
@@ -57,51 +60,3 @@ let mapStateToProps = function(state) {
 };
 
 export { mapStateToProps };
-
-
-// var CommentBoxState = function(state) {
-//   return {
-//     data: state.data,
-//     url: state.url,
-//     pollInterval: state.pollInterval
-//   }
-// }
-//
-// var CommentListState = function(state) {
-//   return {
-//     data: state.data
-//   }
-// }
-//
-// var CommentBoxDispatch = function(dispatch) {
-//   return {
-//     addComment: function(comment) {
-//       comment.id = Date.now();
-//       dispatch({
-//         type: 'add_comment',
-//         comment: comment,
-//       })
-//     },
-//     setComments: function(data) {
-//       dispatch({
-//         type: 'set_comments',
-//         data: data
-//       })
-//     }
-//   }
-// }
-//
-// CommentBox = connect(
-//   CommentBoxState,
-//   CommentBoxDispatch
-// )(CommentBox)
-// CommentList = connect(
-//   CommentListState
-// )(CommentList)
-//
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <CommentBox />
-//   </Provider>,
-//   document.getElementById('content')
-// );
