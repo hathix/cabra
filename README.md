@@ -27,3 +27,8 @@ npm start
 
 - Add Bootstrap-React
 - Bootswatch
+
+## Next
+
+- set up material ui https://material-ui-next.com/getting-started/installation/
+- 
