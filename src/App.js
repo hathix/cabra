@@ -4,12 +4,27 @@ import './App.css';
 
 import HomeView from './views/HomeView';
 
+import { Provider, connect } from 'react-redux';
+import { store, addDeck, mapStateToProps } from './store';
+
+
+// const { getState, dispatch } = store;
+// dispatch(addDeck({
+//   // a new deck
+//   name: "cherry"
+// }));
+// console.log(getState());
+
+let HomeView2 = connect(mapStateToProps)(HomeView);
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="container">
-          <HomeView />
+          <Provider store={store}>
+              <HomeView2 />
+          </Provider>
         </div>
       </div>
     );
