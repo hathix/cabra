@@ -8,12 +8,11 @@ import { Provider, connect } from 'react-redux';
 import { store, addDeck, mapStateToProps } from './store';
 
 
-// const { getState, dispatch } = store;
-// dispatch(addDeck({
-//   // a new deck
-//   name: "cherry"
-// }));
-// console.log(getState());
+const { getState, dispatch } = store;
+dispatch(addDeck({
+  // a new deck
+  name: "cherry"
+}));
 
 let HomeView2 = connect(mapStateToProps)(HomeView);
 

@@ -12,6 +12,12 @@ class HomeView extends Component {
   render() {
     let { decks } = this.props;
 
+    const deckNameList = decks.map(deck =>
+      <p key={ deck.name }>
+        { deck.name }
+      </p>
+    );
+
     return (
         <div>
           Hello world!!!
@@ -19,6 +25,10 @@ class HomeView extends Component {
           <Button bsStyle="primary">
             Sup
           </Button>
+
+          <div>
+            { deckNameList }
+          </div>
         </div>
     );
   }
