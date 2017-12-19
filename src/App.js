@@ -1,9 +1,11 @@
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
 import {Provider, connect} from 'react-redux'
 import {Route} from 'react-router'
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createStore, compose, combineReducers, applyMiddleware} from 'redux'
 import createHistory from 'history/createBrowserHistory'
 import React, {Component} from 'react'
+import persistState, {mergePersistedState} from 'redux-localstorage';
+import adapter from 'redux-localstorage/lib/adapters/localStorage';
 
 // import logo from './logo.svg'
 import './App.css'
@@ -78,10 +80,17 @@ let reducers = {
   router: routerReducer
 }
 
+const storage = adapter(window.localStorage)
+
+const enhancer = compose(
+  applyMiddleware(middleware),
+  persistState(storage, "cabra")
+)
+
 // Also apply our middleware for navigating
 const store = createStore(
   combineReducers(reducers),
-  applyMiddleware(middleware)
+  enhancer
 )
 
 // for decks
