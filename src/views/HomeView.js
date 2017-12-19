@@ -10,9 +10,9 @@ class HomeView extends Component {
   }
 
   render() {
-    let { decks } = this.props;
+    console.log(this.props);
 
-    const deckNameList = decks.map(deck =>
+    const deckNameList = this.props.decks.map(deck =>
       <p key={ deck.name }>
         { deck.name }
       </p>
