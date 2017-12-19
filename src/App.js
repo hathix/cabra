@@ -23,10 +23,22 @@ let ACTION_TYPES = {
 }
 
 let actions = {
-  addDeck: (deck = {
-    name: ''
-  }) => ({type: ACTION_TYPES.ADD_DECK, deck: deck})
+  addDeck: (name='') => ({
+    type: ACTION_TYPES.ADD_DECK,
+    name: name
+  })
 }
+
+// utils to generate an id
+// left pads a string
+let pad = (number, width=3, padder=0) => (
+  String(padder).repeat(width) + String(number)).slice(String(number).length
+)
+
+// e.g. generateID(5) makes random 'zip codes'
+let generateID = length => (
+  pad(Math.floor(Math.random() * Math.pow(10, length)), length)
+)
 
 // TODO factor out reducers
 // handles all deck-related actions
@@ -34,9 +46,18 @@ let deckReducer = function(state = [], action) {
   switch (action.type) {
     case ACTION_TYPES.ADD_DECK:
       // TODO do all this with immutable.js tbh
+      // action.name is the new deck name
+
+      let newDeck = {
+        // randomly generate an id
+        id: generateID(10),
+        name: action.name,
+        cards: []
+      }
+
       return [
         ...state,
-        action.deck
+        newDeck
       ]
     default:
       // do nothing
@@ -71,24 +92,14 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     addDeck: (name) => {
-      dispatch(actions.addDeck({ name: name }))
+      dispatch(actions.addDeck(name))
     }
   }
 }
 
 // for testing, add a new deck
-store.dispatch(actions.addDeck({
-  // a new deck
-  name: "cherry"
-}))
+store.dispatch(actions.addDeck("cherry"))
 
-// TEST function to add a new deck with the given name x
-window.testadd = (x) => {
-  store.dispatch(actions.addDeck({
-    // a new deck
-    name: x
-  }))
-}
 
 // wrap components with the connector so they can access state
 let HomeView2 = connect(mapStateToProps, mapDispatchToProps)(HomeView)
@@ -103,7 +114,7 @@ class App extends Component {
           <ConnectedRouter history={history}>
             <div>
               <Route exact={true} path="/" component={HomeView2}/>
-              <Route path="/about" component={HomeView2}/>
+              <Route path="/deck/:id" component={HomeView2}/>
             </div>
           </ConnectedRouter>
         </Provider>
